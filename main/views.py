@@ -1,13 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.template.defaulttags import lorem
 
 def index(request):
     context = {
-            'title': 'Home',
-            'content': 'Главная страница магазина - HOME',
-            'list': ['first', 'second'],
-            'dict': {'first': 1},
-            'is_authenticated': False
+            'title': 'Home - Главная',
+            'content': "Магазин мебели HOME"
+
         }
 
 
@@ -15,4 +14,12 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse('About page')
+    context = {
+            'title': 'Home - О нас',
+            'content': "О нас",
+            'text_on_page': "Текст о том почему этот магазин классный и какой хороший товар."
+
+        }
+
+
+    return render(request, 'main/about.html', context)
